@@ -1,15 +1,9 @@
+#include "util.hpp"
 #include <iostream>
 #include <vector>
 #include <algorithm>
 
 namespace ss {
-  template<typename T>
-  auto get_tail(std::vector<T> list) -> std::vector<T> {
-    std::vector<T> rest;
-    std::copy(list.cbegin() + 1, list.cend(), std::back_inserter(rest));
-    return rest;
-  }
-
   template<typename T>
   auto min_element(std::vector<T> list) -> T {
     if (list.size() <= 0) {
@@ -18,14 +12,14 @@ namespace ss {
       return list.at(0);
     } else {
       auto first = list.at(0);
-      return std::min(first, min_element(get_tail(list)));
+      return std::min(first, min_element(u::get_tail(list)));
     }
   }
 
   template<typename T>
   auto remove_element(std::vector<T> list, T elem) -> std::vector<T> {
     auto first = list.at(0);
-    auto rest = get_tail(list);
+    auto rest = u::get_tail(list);
     if (first == elem) {
       return rest;
     } else {

@@ -2,7 +2,7 @@
 
 namespace bs {
   template<typename T>
-  auto binary_search(std::vector<T> list, T item) -> T {
+  auto binary_search(std::vector<T> list, T item) -> int {
     auto low = 0;
     auto high = list.size() - 1;
 
