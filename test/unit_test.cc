@@ -1,11 +1,11 @@
 #define CATCH_CONFIG_MAIN  // This tells Catch to provide a main() - only do this in one cpp file
 #include "catch.hpp"
 
-#include "util.hpp"
-#include "binary_search.hpp"
-#include "selection_sort.hpp"
-#include "tco_recursion.hpp"
-#include "divide_conquer.hpp"
+#include "../src/util.hpp"
+#include "../src/binary_search.hpp"
+#include "../src/selection_sort.hpp"
+#include "../src/tco_recursion.hpp"
+#include "../src/divide_conquer.hpp"
 
 TEST_CASE("binary_search") {
   REQUIRE(bs::binary_search<int>({1, 2, 3, 4, 5}, 3) == 2);
