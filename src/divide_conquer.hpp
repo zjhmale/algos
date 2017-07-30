@@ -1,5 +1,9 @@
 #include <vector>
+#include <iostream>
+#include <range/v3/all.hpp>
 #include "util.hpp"
+
+using namespace ranges;
 
 namespace dc {
   template <typename T>
@@ -50,6 +54,24 @@ namespace dc {
       } else {
         return binary_search_dc(u::slice(list, mid + 1, high), elem);
       }
+    }
+  }
+
+  template <typename T>
+  auto quick_sort(std::vector<T> list) -> std::vector<T> {
+    if (list.size() <= 1) {
+      return list;
+    } else {
+      auto pivot = list.at(0);
+      auto tail = u::get_tail(list);
+
+      auto less_list = tail | view::filter([=](T x) { return x <= pivot; });
+      auto greater_list = tail | view::filter([=](T x) { return x > pivot; });
+
+      auto less_sorted = quick_sort<T>(less_list);
+      auto greater_sorted = quick_sort<T>(greater_list);
+      auto pivot_sorted = { pivot };
+      return view::concat(less_sorted, view::concat(pivot_sorted, greater_sorted));
     }
   }
 }

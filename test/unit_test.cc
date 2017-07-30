@@ -44,5 +44,7 @@ TEST_CASE("divide_conquer") {
   REQUIRE(dc::count<int>({1, 2, 3}) == 3);
   REQUIRE(dc::max<int>({1, 2, 3}) == 3);
   REQUIRE(dc::binary_search_dc<int>({1, 2, 3, 4, 5}, 3) == 2);
+  std::vector<int> l = {1, 2, 3, 4, 5};
+  REQUIRE(dc::quick_sort<int>({1, 5, 3, 4, 2}) == l);
 }
 
